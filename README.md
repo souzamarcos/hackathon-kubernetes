@@ -3,7 +3,7 @@ Repositório com a configuração do kubernetes
 
 
 # Deploy
-Processo de deploy da aplicação utilizando a aws
+Processo de deploy do kubernetes nos ambientes de [Produção](#produção) ou [Local](#local).
 
 
 ## Produção
