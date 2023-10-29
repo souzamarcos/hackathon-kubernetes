@@ -1,6 +1,11 @@
 # Tech Challenge Kubernetes
 Repositório com a configuração do kubernetes
 
+# Repositórios relacionados
+* [Aplicação](https://github.com/souzamarcos/tech-challenge-fast-food)
+* [Infraestrutura Terraform](https://github.com/souzamarcos/tech-challenge-terraform)
+* [Configuração do Kubernetes](https://github.com/souzamarcos/tech-challenge-kubernetes)
+* [Lambda de Autenticação](https://github.com/souzamarcos/tech-challenge-authentication-lambda)
 
 # Deploy
 Processo de deploy do kubernetes nos ambientes de [Produção](#produção) ou [Local](#local).
