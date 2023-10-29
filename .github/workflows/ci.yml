@@ -32,6 +32,6 @@ jobs:
     
     - name: Deploy to EKS
       run: |
-        kubectl apply -f k8s-deployment-burger-application.yaml
-        kubectl apply -f k8s-svc-burger-application.yaml
-        kubectl apply -f k8s-hpa-burger-application.yaml
+        kubectl apply -f prod/k8s-deployment-burger-application.yaml
+        kubectl apply -f prod/k8s-svc-burger-application.yaml
+        kubectl apply -f prod/k8s-hpa-burger-application.yaml
