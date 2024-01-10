@@ -54,9 +54,7 @@ kubectl create secret generic mysql-secret --from-literal=url=jdbc:mysql://<HOST
 
 4 - Aplique os outros recursos do kubernetes
 ```bash
-kubectl apply -f local/k8s-deployment-burger-application.yaml
-kubectl apply -f local/k8s-svc-burger-application.yaml
-kubectl apply -f local/k8s-hpa-burger-application.yaml
+kubectl apply -f prod -R
 ```
 
 A aplicação estará disponível no endereço [http://localhost/swagger](http://localhost/swagger).
@@ -64,8 +62,6 @@ A aplicação estará disponível no endereço [http://localhost/swagger](http:/
 
 > Obs: Caso queira remover todos os recursos criados execute os comandos abaixo:
 >```bash
->kubectl delete -f local/k8s-hpa-burger-application.yaml
->kubectl delete -f local/k8s-svc-burger-application.yaml
->kubectl delete -f local/k8s-deployment-burger-application.yaml
+>kubectl apply -f prod -R
 >kubectl delete secret mysql-secret 
 >```
