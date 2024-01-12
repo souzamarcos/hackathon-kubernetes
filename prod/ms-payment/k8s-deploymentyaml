@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-product-deployment
+  name: ms-payment-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: ms-product
+      app: ms-payment
   template:
     metadata:
       labels:
-        app: ms-product
+        app: ms-payment
     spec:
       containers:
-        - name: ms-product
-          image: 173528839546.dkr.ecr.us-east-1.amazonaws.com/ms-product:latest
+        - name: ms-payment
+          image: 173528839546.dkr.ecr.us-east-1.amazonaws.com/ms-payment:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -22,17 +22,17 @@ spec:
             - name: SPRING_DATASOURCE_URL
               valueFrom:
                 secretKeyRef:
-                  name: db-order-secret
+                  name: db-payment-secret
                   key: url
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: db-order-secret
+                  name: db-payment-secret
                   key: username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-order-secret
+                  name: db-payment-secret
                   key: password
             - name: SPRING_PROFILES_ACTIVE
               value: "production"
