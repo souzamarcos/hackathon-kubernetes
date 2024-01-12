@@ -24,9 +24,9 @@ Para atualizar o ambiente de prod basta atualizar os arquivos na pasta [prod](/p
 1 - Criação das secrets com as informações de conexão com as basse de dados RDS de cada microserviço. Obs: credenciais omitidas por questão de segurança 
 
 ```bash
-kubectl create secret generic db-product-secret --from-literal=url=jdbc:mysql://<HOST>:3306/burger --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-order-secret --from-literal=url=jdbc:mysql://<HOST>:3306/burger --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-payment-secret --from-literal=url=jdbc:mysql://<HOST>:3306/burger --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-product-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-order-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbOrder --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-payment-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbPayment --from-literal=username=user --from-literal=password=password
 ```
 
 ## Local
@@ -51,9 +51,9 @@ ifconfig
 
 3 - Crie as as secrets e defina a URL da base de dados. **No comando abaixo substitua o texto `<HOST>` pelo ip da máquina consultado na etapa acima**. Caso decida usar uma base MySql em outro local, coloque o endereço da mesma.
 ```bash
-kubectl create secret generic db-product-secret --from-literal=url=jdbc:mysql://<HOST>:3306/burger --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-order-secret --from-literal=url=jdbc:mysql://<HOST>:3306/burger --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-payment-secret --from-literal=url=jdbc:mysql://<HOST>:3306/burger --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-product-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-order-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbOrder --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-payment-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbPayment --from-literal=username=user --from-literal=password=password
 ```
 
 4 - Aplique os outros recursos do kubernetes
