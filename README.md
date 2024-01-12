@@ -67,5 +67,7 @@ A aplicação estará disponível no endereço [http://localhost/swagger](http:/
 > Obs: Caso queira remover todos os recursos criados execute os comandos abaixo:
 >```bash
 >kubectl apply -f prod -R
->kubectl delete secret mysql-secret 
+>kubectl delete secret db-product-secret
+>kubectl delete secret db-order-secret
+>kubectl delete secret db-payment-secret
 >```
