@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-burger-deployment
+  name: ms-product-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: app-burger
+      app: ms-product
   template:
     metadata:
       labels:
-        app: app-burger
+        app: ms-product
     spec:
       containers:
-        - name: app-burger
-          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/burger-application:latest
+        - name: ms-product
+          image: 173528839546.dkr.ecr.us-east-1.amazonaws.com/ms-product:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -22,17 +22,17 @@ spec:
             - name: SPRING_DATASOURCE_URL
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
+                  name: db-order-secret
                   key: url
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
+                  name: db-order-secret
                   key: username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
+                  name: db-order-secret
                   key: password
             - name: SPRING_PROFILES_ACTIVE
               value: "production"
