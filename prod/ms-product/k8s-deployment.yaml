@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ms-order
-          image: 173528839546.dkr.ecr.us-east-1.amazonaws.com/ms-order:latest
+          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-order:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
