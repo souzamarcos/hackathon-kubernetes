@@ -35,7 +35,7 @@ spec:
                   name: db-order-secret
                   key: password
             - name: SPRING_PROFILES_ACTIVE
-              value: "production"
+              value: "prod"
               
           startupProbe:
             httpGet:
