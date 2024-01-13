@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-product-deployment
+  name: ms-order-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-product
+      app: ms-order
   template:
     metadata:
       labels:
-        app: ms-product
+        app: ms-order
     spec:
       containers:
-        - name: ms-product
-          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-product:latest
+        - name: ms-order
+          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-order:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
