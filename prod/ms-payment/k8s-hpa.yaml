@@ -9,4 +9,4 @@ spec:
     name: ms-payment-deployment
   minReplicas: 1
   maxReplicas: 1
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 90
