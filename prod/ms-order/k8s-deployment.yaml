@@ -36,6 +36,9 @@ spec:
                   key: password
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
+
+            - name: API_PRODUCT_HOST
+              value: "http://svc-ms-product.default.svc.cluster.local:8080"
               
           startupProbe:
             httpGet:
