@@ -1,13 +1,20 @@
-apiVersion: v1
-kind: Service
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
 metadata:
   labels:
     app: ms-payment
   name: svc-ms-payment
+  annotations:
+    konghq.com/strip-path: 'true'
 spec:
-  ports:
-    - port: 80
-      targetPort: 8080
-      protocol: TCP
-  selector:
-    app: ms-payment
+  parentRefs:
+    - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /payment
+    backendRefs:
+    - name: ms-payment
+      kind: Service
+      port: 8080
