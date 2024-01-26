@@ -38,13 +38,13 @@ kubectl apply -f prod/kong/k8s-gateway-class.yaml
 ```
 
 2 - Agora instale o kong no kubernetes via helm:
-2.1 - Adicionando o charts do kong
+- 2.1 - Adicionando o charts do kong
 ```bash
 helm repo add kong https://charts.konghq.com
 helm repo update
 ```
 
-2.2 - Instalando o kong
+- 2.2 - Instalando o kong
 ```bash
 helm install kong kong/ingress -n kong --create-namespace 
 ```
