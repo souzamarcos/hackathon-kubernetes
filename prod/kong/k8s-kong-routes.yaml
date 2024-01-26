@@ -1,20 +1,18 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  labels:
-    app: ms-product
-  name: svc-ms-product
+  name: echo
   annotations:
     konghq.com/strip-path: 'true'
 spec:
   parentRefs:
-    - name: kong
+  - name: kong
   rules:
   - matches:
     - path:
         type: PathPrefix
-        value: /product
+        value: /echo
     backendRefs:
-    - name: ms-product
+    - name: echo
       kind: Service
-      port: 8080
+      port: 1027

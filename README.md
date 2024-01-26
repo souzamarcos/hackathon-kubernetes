@@ -29,6 +29,26 @@ kubectl create secret generic db-order-secret --from-literal=url=jdbc:mysql://<H
 kubectl create secret generic db-payment-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbPayment --from-literal=username=user --from-literal=password=password
 ```
 
+### Configurando o kong
+
+1 - Execute os comandos abaixo:
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml
+kubectl apply -f prod/kong/k8s-gateway-class.yaml
+```
+
+2 - Agora instale o kong no kubernetes via helm:
+- 2.1 - Adicionando o charts do kong
+```bash
+helm repo add kong https://charts.konghq.com
+helm repo update
+```
+
+- 2.2 - Instalando o kong
+```bash
+helm install kong kong/ingress -n kong --create-namespace 
+```
+
 ## Local
 Para configurar a aplicação no kubernetes local **execute os comandos abaixo na raiz do projeto**:
 
