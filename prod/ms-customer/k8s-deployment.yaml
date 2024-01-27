@@ -19,21 +19,6 @@ spec:
           ports:
             - containerPort: 8080
           env:
-            # - name: SPRING_DATASOURCE_URL
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: mysql-secret
-            #       key: url
-            # - name: SPRING_DATASOURCE_USERNAME
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: mysql-secret
-            #       key: username
-            # - name: SPRING_DATASOURCE_PASSWORD
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: mysql-secret
-            #       key: password
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
               
