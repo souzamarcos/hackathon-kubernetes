@@ -39,6 +39,9 @@ spec:
 
             - name: API_PRODUCT_HOST
               value: "http://svc-ms-product.default.svc.cluster.local"
+            
+            - name: API_CUSTOMER_HOST
+              value: "http://svc-ms-customer.default.svc.cluster.local"
               
           startupProbe:
             httpGet:
