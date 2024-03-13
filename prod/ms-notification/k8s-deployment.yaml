@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-notification-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-notification
+  template:
+    metadata:
+      labels:
+        app: ms-notification
+    spec:
+      containers:
+        - name: ms-notification
+          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-notification:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+              
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            timeoutSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            failureThreshold: 1
+            periodSeconds: 20
