@@ -21,6 +21,8 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "prod"
+            - name: API_CUSTOMER_HOST
+              value: "http://svc-ms-customer.default.svc.cluster.local:8080"
               
           startupProbe:
             httpGet:
