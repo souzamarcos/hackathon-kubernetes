@@ -1,22 +1,20 @@
-# Tech Challenge Kubernetes
+# Hackathon Kubernetes
 Repositório com a configuração do kubernetes
 
 # Repositórios relacionados
-* [Serviço de produto](https://github.com/souzamarcos/tech-challenge-ms-product)
-* [Serviço de pedidos](https://github.com/souzamarcos/tech-challenge-ms-order)
-* [Serviço de pagamento](https://github.com/souzamarcos/tech-challenge-ms-payment)
-* [Serviço de cliente](https://github.com/souzamarcos/tech-challenge-ms-customer)
-* [Serviço de notificação](https://github.com/souzamarcos/tech-challenge-ms-notification)
-* [Infraestrutura Terraform](https://github.com/souzamarcos/tech-challenge-terraform)
-* [Configuração do Kubernetes](https://github.com/souzamarcos/tech-challenge-kubernetes)
-* [Lambda de Autenticação](https://github.com/souzamarcos/tech-challenge-authentication-lambda)
+* [Serviço de funcionários](https://github.com/souzamarcos/hackathon-ms-employee)
+* [Serviço de entrada de ponto](https://github.com/souzamarcos/hackathon-ms-working-hours-entry)
+* [Serviço de registro de ponto](https://github.com/souzamarcos/hackathon-ms-working-hours-registry)
+* [Serviço de relatório](https://github.com/souzamarcos/hackathon-ms-report)
+* [Infraestrutura Terraform](https://github.com/souzamarcos/hackathon-terraform)
+* [Configuração do Kubernetes](https://github.com/souzamarcos/hackathon-kubernetes)
 
 # Deploy
 Processo de deploy do kubernetes nos ambientes de [Produção](#produção) ou [Local](#local).
 
 
 ## Produção
-Para atualizar o ambiente de prod basta atualizar os arquivos na pasta [prod](/prod/) e mergear a PR na branch `main`.
+Para atualizar o ambiente de prod basta atualizar os arquivos na pasta [config](/config/) e mergear a PR na branch `main`.
 
 
 ### Configuração Inicial
@@ -25,9 +23,7 @@ Para atualizar o ambiente de prod basta atualizar os arquivos na pasta [prod](/p
 1 - Criação das secrets com as informações de conexão com as basse de dados RDS de cada microserviço. Obs: credenciais omitidas por questão de segurança 
 
 ```bash
-kubectl create secret generic db-product-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-order-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbOrder --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-payment-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbPayment --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
 ```
 
 ### Configurando o kong
@@ -72,14 +68,12 @@ ifconfig
 
 3 - Crie as as secrets e defina a URL da base de dados. **No comando abaixo substitua o texto `<HOST>` pelo ip da máquina consultado na etapa acima**. Caso decida usar uma base MySql em outro local, coloque o endereço da mesma.
 ```bash
-kubectl create secret generic db-product-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-order-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbOrder --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-payment-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbPayment --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
 ```
 
 4 - Aplique os outros recursos do kubernetes
 ```bash
-kubectl apply -f prod -R
+kubectl apply -f config -R
 ```
 
 A aplicação estará disponível no endereço [http://localhost/swagger](http://localhost/swagger).
@@ -87,8 +81,6 @@ A aplicação estará disponível no endereço [http://localhost/swagger](http:/
 
 > Obs: Caso queira remover todos os recursos criados execute os comandos abaixo:
 >```bash
->kubectl apply -f prod -R
->kubectl delete secret db-product-secret
->kubectl delete secret db-order-secret
->kubectl delete secret db-payment-secret
+>kubectl apply -f config -R
+>kubectl delete secret db-working-hours-secret
 >```

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-customer-deployment
+  name: ms-working-hours-entry-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-customer
+      app: ms-working-hours-entry
   template:
     metadata:
       labels:
-        app: ms-customer
+        app: ms-working-hours-entry
     spec:
       containers:
-        - name: ms-customer
-          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-customer:latest
+        - name: ms-working-hours-entry
+          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-working-hours-entry:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

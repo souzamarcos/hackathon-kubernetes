@@ -1,7 +1,7 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: svc-ms-notification
+  name: svc-ms-working-hours-entry
   annotations:
     konghq.com/strip-path: 'true'
 spec:
@@ -11,8 +11,8 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /notification/v1
+        value: /working-hours-entry/v1
     backendRefs:
-    - name: svc-ms-notification
+    - name: svc-ms-working-hours-entry
       kind: Service
       port: 8080
