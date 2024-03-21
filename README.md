@@ -14,7 +14,7 @@ Processo de deploy do kubernetes nos ambientes de [Produção](#produção) ou [
 
 
 ## Produção
-Para atualizar o ambiente de prod basta atualizar os arquivos na pasta [config](/config/) e mergear a PR na branch `main`.
+Para atualizar o ambiente de produção basta atualizar os arquivos na pasta [config](/config/) e mergear a PR na branch `main`.
 
 
 ### Configuração Inicial
@@ -23,7 +23,7 @@ Para atualizar o ambiente de prod basta atualizar os arquivos na pasta [config](
 1 - Criação das secrets com as informações de conexão com as basse de dados RDS de cada microserviço. Obs: credenciais omitidas por questão de segurança 
 
 ```bash
-kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/db-working-hours --from-literal=username=user --from-literal=password=password
 ```
 
 ### Configurando o kong
@@ -31,7 +31,7 @@ kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:my
 1 - Execute os comandos abaixo:
 ```bash
 kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml
-kubectl apply -f prod/kong/k8s-gateway-class.yaml
+kubectl apply -f config/kong/k8s-gateway-class.yaml
 ```
 
 2 - Agora instale o kong no kubernetes via helm:
@@ -68,7 +68,7 @@ ifconfig
 
 3 - Crie as as secrets e defina a URL da base de dados. **No comando abaixo substitua o texto `<HOST>` pelo ip da máquina consultado na etapa acima**. Caso decida usar uma base MySql em outro local, coloque o endereço da mesma.
 ```bash
-kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbProduct --from-literal=username=user --from-literal=password=password
+kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/db-working-hours --from-literal=username=user --from-literal=password=password
 ```
 
 4 - Aplique os outros recursos do kubernetes
