@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-ms-payment
+  name: svc-ms-working-hours-registry
 spec:
   ports:
     - port: 8080
       targetPort: 8080
       protocol: TCP
   selector:
-    app: ms-payment
+    app: ms-working-hours-registry

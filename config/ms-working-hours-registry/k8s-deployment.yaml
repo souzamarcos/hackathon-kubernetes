@@ -1,47 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-order-deployment
+  name: ms-working-hours-registry-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-order
+      app: ms-working-hours-registry
   template:
     metadata:
       labels:
-        app: ms-order
+        app: ms-working-hours-registry
     spec:
       containers:
-        - name: ms-order
-          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-order:latest
+        - name: ms-working-hours-registry
+          image: 401196964700.dkr.ecr.us-east-1.amazonaws.com/ms-working-hours-registry:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
             - name: SPRING_DATASOURCE_URL
               valueFrom:
                 secretKeyRef:
-                  name: db-order-secret
+                  name: db-working-hours-secret
                   key: url
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: db-order-secret
+                  name: db-working-hours-secret
                   key: username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-order-secret
+                  name: db-working-hours-secret
                   key: password
-            - name: SPRING_PROFILES_ACTIVE
-              value: "prod"
-
-            - name: API_PRODUCT_HOST
-              value: "http://svc-ms-product.default.svc.cluster.local:8080"
-            
-            - name: API_CUSTOMER_HOST
-              value: "http://svc-ms-customer.default.svc.cluster.local:8080"
               
           startupProbe:
             httpGet:

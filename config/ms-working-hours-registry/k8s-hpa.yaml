@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-ms-notification
+  name: hpa-ms-working-hours-registry
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: ms-notification-deployment
+    name: ms-working-hours-registry-deployment
   minReplicas: 1
   maxReplicas: 1
   targetCPUUtilizationPercentage: 90

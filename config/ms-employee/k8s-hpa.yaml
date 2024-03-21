@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-ms-order
+  name: hpa-ms-employee
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: ms-order-deployment
+    name: ms-employee-deployment
   minReplicas: 1
   maxReplicas: 1
   targetCPUUtilizationPercentage: 90
