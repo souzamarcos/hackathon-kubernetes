@@ -36,7 +36,27 @@ spec:
                 secretKeyRef:
                   name: db-working-hours-replica-secret
                   key: password
-              
+            - name: SPRING_MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: email-secret
+                  key: username
+            - name: SPRING_MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: email-secret
+                  key: password
+            - name: MAIL_SENDER_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: email-secret
+                  key: USERNAME
+            - name: MAIL_SENDER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: email-secret
+                  key: password
+                  
           startupProbe:
             httpGet:
               path: /health

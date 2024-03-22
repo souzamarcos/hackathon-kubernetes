@@ -23,9 +23,9 @@ Para atualizar o ambiente de produção basta atualizar os arquivos na pasta [co
 1 - Criação das secrets com as informações de conexão com as basse de dados RDS de cada microserviço e da senha de email utilizada nos serviço. Obs: credenciais omitidas por questão de segurança 
 
 ```bash
-kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=<user> --from-literal=password=<password>
-kubectl create secret generic db-working-hours-replica-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=<user> --from-literal=password=<password>
-kubectl create secret generic email-secret --from-literal=password=<password>
+kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=<username> --from-literal=password=<password>
+kubectl create secret generic db-working-hours-replica-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=<username> --from-literal=password=<password>
+kubectl create secret generic email-secret --from-literal=username=<username> --from-literal=password=<password>
 ```
 
 ### Configurando o kong
@@ -70,9 +70,9 @@ ifconfig
 
 3 - Crie as as secrets e defina a URL da base de dados. **No comando abaixo substitua o texto `<HOST>` pelo ip da máquina consultado na etapa acima**. Caso decida usar uma base MySql em outro local, coloque o endereço da mesma.
 ```bash
-kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=user --from-literal=password=password
-kubectl create secret generic db-working-hours-replica-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=user --from-literal=password=password
-kubectl create secret generic email-secret --from-literal=password=<password>
+kubectl create secret generic db-working-hours-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=<username> --from-literal=password=<password>
+kubectl create secret generic db-working-hours-replica-secret --from-literal=url=jdbc:mysql://<HOST>:3306/dbWorkingHours --from-literal=username=<username> --from-literal=password=<password>
+kubectl create secret generic email-secret --from-literal=username=<username> --from-literal=password=<password>
 ```
 
 4 - Aplique os outros recursos do kubernetes
