@@ -50,7 +50,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: email-secret
-                  key: USERNAME
+                  key: username
             - name: MAIL_SENDER_PASSWORD
               valueFrom:
                 secretKeyRef:
